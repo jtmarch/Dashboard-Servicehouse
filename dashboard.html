@@ -24,7 +24,7 @@
       <div class="grid">
           <h2>BE Delivery Pipeline:</h2>
           <div data-ng-repeat="i in [0,1,2]">
-              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Delivery%20Pipeline', 'Build', i)">
+              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Delivery%20Pipeline', i)">
                   <div ng-repeat="position in position" class="depth-separator">
                       <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">
                           <a href="{{job.url}}" target="_blank">
@@ -52,7 +52,7 @@
 
           <h2>BE Deployment Pipeline:</h2>
           <div data-ng-repeat="i in [0,1,2]">
-              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Deployment%20Pipeline', 'Deploy to ACC', i)">
+              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Deployment%20Pipeline', i)">
                   <div ng-repeat="position in position" class="depth-separator">
                       <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">
                           <a href="{{job.url}}" target="_blank">

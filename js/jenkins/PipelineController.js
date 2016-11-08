@@ -18,15 +18,15 @@ angular
 
         self.initialize();
 
-        $scope.firstJob = function(view, buildName, buildnr) {
-            self.fetchJobs(view, buildName, buildnr);
+        $scope.firstJob = function(view, buildnr) {
+            self.fetchJobs(view, buildnr);
 
-            $interval(function() { self.fetchJobs(view, buildName, buildnr); } , 15000);
+            $interval(function() { self.fetchJobs(view, buildnr); } , 15000);
         };
 
-        self.fetchJobs = function(view, buildName, buildnr) {
+        self.fetchJobs = function(view, buildnr) {
             PipelineService.getJobsFromJenkins(view).then(function(data) {
-
+                var buildName = data.data.pipelines[0].firstJob;
                 var firstJob = data.data.jobs[0];
                 for(var x=0;x<data.data.jobs.length;x++){
                     if(data.data.jobs[x].displayName == buildName) {
