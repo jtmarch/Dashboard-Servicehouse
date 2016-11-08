@@ -47,6 +47,7 @@ THE SOFTWARE.
     /* Usual setup stuff */
     position: relative;
     height: 25px;
+    margin-top: 7px;
     /* Pad right so we don't cover the borders when fully progressed */
     padding-right: 2px;
     /* For browser that don't support gradients, we'll set a blanket background colour */

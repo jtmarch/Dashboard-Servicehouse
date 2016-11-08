@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>ServiceHouse Dashboard</title>
     <link rel="stylesheet" type="text/css" href="css/main.css" title="default">
-    <link rel="alternate stylesheet" type="text/css" href="css/main-white.css" title="alternate" />
     <link rel="stylesheet" type="text/css" href="css/progress-bar.css">
 
     <script src="js/vendor/jquery-1.10.2.min.js"></script>
@@ -23,7 +22,7 @@
       <img src="img/logo.png" border="0"/>
       <div class="grid">
           <h2>BE Delivery Pipeline:</h2>
-          <div data-ng-repeat="i in [0,1]">
+          <div data-ng-repeat="i in [0,1,2]">
               <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Delivery%20Pipeline', i)">
                   <div ng-repeat="position in position" class="depth-separator">
                       <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">
@@ -51,7 +50,7 @@
           </div>
 
           <h2>BE Deployment Pipeline:</h2>
-          <div data-ng-repeat="i in [0,1]">
+          <div data-ng-repeat="i in [0,1,2]">
               <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Deployment%20Pipeline', i)">
                   <div ng-repeat="position in position" class="depth-separator">
                       <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">

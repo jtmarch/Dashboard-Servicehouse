@@ -26,7 +26,6 @@ angular
         };
 
         self.fetchPipelines = function(view, buildnr) {
-            $scope.jobs = [];
             PipelineService.getJobsFromJenkins(view).then(function(data) {
 
                     var buildName = data.data.pipelines[0].firstJob;
@@ -45,7 +44,18 @@ angular
                         var status = task.status.type;
                         var percentage = task.status.percentage;
 
-                        var job = new Object();
+                        var job = undefined;
+                        for(var x=0;x<$scope.jobs.length;x++) {
+                            var tmpJob = $scope.jobs[x];
+                            if(tmpJob.index == column && tmpJob.rowIndex == row) {
+                                job = tmpJob;
+                                break;
+                            }
+                        }
+
+                        if(job == undefined){
+                            job = new Object();
+                        }
                         job.rowIndex = row;
                         job.index = column;
                         job.cucumberFetchSucces = true;
@@ -58,8 +68,14 @@ angular
                         job.class = status;
                         job.buildNumber = buildId;
                         job.progress = percentage;
-                        job.duration = PipelineService.getDurationAsString(duration) + ' minuten';;
-                        job.time = PipelineService.getDatumAsString(timestamp);
+                        if(duration != undefined) {
+                            job.duration = PipelineService.getDurationAsString(duration) + ' minuten';
+                        }
+                        if(timestamp != null) {
+                            job.time = PipelineService.getDatumAsString(timestamp);
+                        } else {
+                            job.time = '';
+                        }
                         job.building = (status == 'RUNNING');
                         job.isBlue = (status == 'IDLE');
 
