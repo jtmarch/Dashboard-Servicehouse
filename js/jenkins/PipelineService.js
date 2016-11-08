@@ -4,7 +4,7 @@ angular
         function ($http) {
         var self = this;
 
-        var url = 'http://jenkins.servicehouse.nl/view/{{view}}/api/json?tree=pipelines[name,firstJob,pipelines[version]],jobs[name,displayName,downstreamProjects[name],lastCompletedBuild[result],url,builds[actions,estimatedDuration,result,timestamp,duration,number,building,actions[causes[upstreamBuild]]]]';
+        var url = 'http://jenkins.servicehouse.nl/view/{{view}}/api/json?tree=pipelines[name,firstJob,pipelines[version,stages[column,row,tasks[link,buildId,duration,timestamp,name,status[type,timestamp,duration,percentage]]]]]';
 
         self.getJobsFromJenkins = function(view) {
             var jenkinsUrl = self.template(url, {view: view});

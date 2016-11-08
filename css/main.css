@@ -536,6 +536,35 @@ ul {
 	border-radius: 5px;	
 }
 
+.job-IDLE {
+	background: #00ccff;
+}
+
+.job-RUNNING {
+	background: yellow;
+	font-weight: bold;
+	animation: 1 blink 1s step-end infinite;
+	-webkit-animation: blink 2s step-end infinite;
+}
+
+.job-SUCCESS {
+	background: #00FF7B;
+	font-weight: bold;
+}
+.job-FAILED {
+	background: #FF0000;
+	font-weight: bold;
+}
+.job-unstable {
+	background: #FF8800;
+	font-weight: bold;
+}
+
+.job-DISABLED {
+	background: silver;
+	font-weight: bold;
+}
+
 .job-waiting {
 	background: #00ccff;
 }
@@ -614,6 +643,20 @@ ul {
     right: 45px;
 }
 
+.IDLE {
+    background: #2096ff;
+    background: -moz-linear-gradient(top,  #2096ff 0%, #9fdeff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2096ff), color-stop(100%,#9fdeff));
+    background: -webkit-linear-gradient(top,  #2096ff 0%,#9fdeff 100%);
+    background: -o-linear-gradient(top,  #2096ff 0%,#9fdeff 100%);
+    background: -ms-linear-gradient(top,  #2096ff 0%,#9fdeff 100%);
+    background: linear-gradient(to bottom,  #2096ff 0%,#9fdeff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2096ff', endColorstr='#9fdeff',GradientType=0 );
+    background: #2096ff;
+    font-weight: bold;
+    color: white;
+    opacity: 0.3;
+ }
 .NOT_STARTED {
     background: #2096ff;
     background: -moz-linear-gradient(top,  #2096ff 0%, #9fdeff 100%);
@@ -627,6 +670,19 @@ ul {
     font-weight: bold;
     color: white;
     opacity: 0.3;
+ }
+ .RUNNING {
+     background: #F2FF00;
+     background: -moz-linear-gradient(top,  #F2FF00 0%, #FAFF96 100%);
+     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F2FF00), color-stop(100%,#FAFF96));
+     background: -webkit-linear-gradient(top,  #F2FF00 0%,#FAFF96 100%);
+     background: -o-linear-gradient(top,  #F2FF00 0%,#FAFF96 100%);
+     background: -ms-linear-gradient(top,  #F2FF00 0%,#FAFF96 100%);
+     background: linear-gradient(to bottom,  #F2FF00 0%,#FAFF96 100%);
+     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F2FF00', endColorstr='#FAFF96',GradientType=0 );
+     font-weight: bold;
+     animation: 1 blink 1s step-end infinite;
+     -webkit-animation: blink 2s step-end infinite;
  }
 .BUSY {
     background: #F2FF00;
@@ -652,6 +708,17 @@ ul {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00FF7B', endColorstr='#A8F781',GradientType=0 );
     font-weight: bold;
 }
+.FAILED {
+    background: #FF0000;
+    background: -moz-linear-gradient(top,  #FF0000 0%, #c83b36 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FF0000), color-stop(100%,#c83b36));
+    background: -webkit-linear-gradient(top,  #FF0000 0%,#c83b36 100%);
+    background: -o-linear-gradient(top,  #FF0000 0%,#c83b36 100%);
+    background: -ms-linear-gradient(top,  #FF0000 0%,#c83b36 100%);
+    background: linear-gradient(to bottom,  #FF0000 0%,#c83b36 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF0000', endColorstr='#c83b36',GradientType=0 );
+    font-weight: bold;
+}
 .FAILURE {
     background: #FF0000;
     background: -moz-linear-gradient(top,  #FF0000 0%, #c83b36 100%);
@@ -675,6 +742,10 @@ ul {
     font-weight: bold;
 }
 .ABORTED {
+    background: silver;
+    font-weight: bold;
+}
+.DISABLED {
     background: silver;
     font-weight: bold;
 }
