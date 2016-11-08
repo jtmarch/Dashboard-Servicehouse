@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ServiceHouse Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" title="default">
+    <link rel="alternate stylesheet" type="text/css" href="css/main-white.css" title="alternate" />
+    <link rel="stylesheet" type="text/css" href="css/progress-bar.css">
+
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/jquery.base64.min.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+
+    <script src="js/AppController.js"></script>
+
+    <script src="js/jenkins/PipelineController.js"></script>
+    <script src="js/jenkins/PipelineService.js"></script>
+
+</head>
+
+  <body ng-app="dashboardApp" style="margin:20px;">
+    <div class="mainframe">
+      <img src="img/logo.png" border="0"/>
+      <div class="grid">
+          <h2>BE Delivery Pipeline:</h2>
+          <div data-ng-repeat="i in [0,1,2]">
+              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Delivery%20Pipeline', 'Build', i)">
+                  <div ng-repeat="position in position" class="depth-separator">
+                      <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">
+                          <a href="{{job.url}}" target="_blank">
+                              <div class="job-number">{{job.buildNumber}}</div>
+                              <div class="report">{{job.displayName}}</div>
+                          </a>
+                          <div class="job-time">{{job.time}}</div>
+                          <div class="job-duration">
+                              <div ng-if="job.building == false">{{job.duration}}</div>
+                              <div ng-if="job.building == true">
+                                  <div class="ui-progress-bar ui-container transition warning" id="progress_bar">
+                                      <div class="ui-progress" style="width: {{job.progress}}%; overflow: hidden;">
+                                      <span class="ui-label" style="display: block;">
+                                        <b class="value">{{job.progress}}%</b>
+                                      </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="job-block-last {{job.lastResult}}"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <h2>BE Deployment Pipeline:</h2>
+          <div data-ng-repeat="i in [0,1,2]">
+              <div class="pipeline" ng-controller="PipelineController" ng-init="firstJob('BE%20Deployment%20Pipeline', 'Deploy to ACC', i)">
+                  <div ng-repeat="position in position" class="depth-separator">
+                      <div ng-repeat="job in jobs" class="job-block {{job.class}}" ng-if="job.index == position.index">
+                          <a href="{{job.url}}" target="_blank">
+                              <div class="job-number">{{job.buildNumber}}</div>
+                              <div class="report">{{job.displayName}}</div>
+                          </a>
+                          <div class="job-time">{{job.time}}</div>
+                          <div class="job-duration">
+                              <div ng-if="job.building == false">{{job.duration}}</div>
+                              <div ng-if="job.building == true">
+                                  <div class="ui-progress-bar ui-container transition warning" id="progress_bar">
+                                      <div class="ui-progress" style="width: {{job.progress}}%; overflow: hidden;">
+                                      <span class="ui-label" style="display: block;">
+                                        <b class="value">{{job.progress}}%</b>
+                                      </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="job-block-last {{job.lastResult}}"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+	 </div>
+    </div>
+
+  </body>
+</html>
