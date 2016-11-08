@@ -179,8 +179,8 @@ angular
         if(job.parentBuildnumber == -1) {
             return buildNr;
         }
-        for(var x=buildNr;x<buildNr+3;x++){
-            if(builds[x].actions.length > 0){
+        for(var x=0;x<5;x++){
+            if(builds[x] != undefined && builds[x].actions.length > 0){
                 for(var y=0;y<builds[x].actions.length;y++){
                     if(builds[x].actions[y].causes != undefined) {
                         for(var z=0;z<builds[x].actions[y].causes.length;z++){
@@ -198,26 +198,11 @@ angular
 
 
     self.determineIfParentIsBlue = function(job, build){
-        for(var x=0;x<job.index;x++){
-            if($scope.position[x].rowArray.length > job.rowIndex) {
-                if($scope.position[x].rowArray[job.rowIndex].blue) {
-                    return true;
-                }
-            } else {
-                if($scope.position[x].rowArray[0].blue) {
-                    return true;
-                }
-            }
-        }
-
         if(job.parentBuildnumber != -1 && build.actions.length > 0) {
             for(var x=0;x<build.actions.length;x++){
                 if(build.actions[x].causes != undefined){
                     for(var y=0;y<build.actions[x].causes.length;y++){
-                        if(build.actions[x].causes[y].upstreamBuild != undefined && build.actions[x].causes[y].upstreamBuild != job.parentBuildnumber){
-                            //Build was NOT triggered by parent build (number)
-                            return true;
-                        } else if (build.actions[x].causes[y].upstreamBuild != undefined && build.actions[x].causes[y].upstreamBuild == job.parentBuildnumber){
+                         if (build.actions[x].causes[y].upstreamBuild != undefined && build.actions[x].causes[y].upstreamBuild == job.parentBuildnumber){
                             //Build was triggered by parent.
                             return false;
                         }
