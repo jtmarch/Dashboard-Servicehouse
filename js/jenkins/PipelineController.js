@@ -68,7 +68,7 @@ angular
                         job.class = status;
                         job.buildNumber = buildId;
                         job.progress = percentage;
-                        if(duration != undefined) {
+                        if(duration != -1) {
                             job.duration = PipelineService.getDurationAsString(duration) + ' minuten';
                         }
                         if(timestamp != null) {
